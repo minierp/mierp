@@ -1,0 +1,64 @@
+.logindiv {
+   /* max-height:100%;
+    height:100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;    */
+    background-image:url("/assets/img/loginback.jpg");
+    background-repeat:no-repeat; 
+    background-size:100% 100%;
+
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: grid;    
+    grid-template-columns:1fr minmax(300px, 350px) 1fr;
+    grid-template-rows: 50px minmax(400px, 550px) auto;
+    grid-gap: 0px;
+    grid-template-areas: 
+    "h h h"
+    "l m r"
+    "f f f";
+    /* opacity:0.4; */ /* 背景图片透明不能用整个，处理图片就可以了*/
+}
+.top {
+    grid-area: h;
+}
+.left {
+    grid-area: l;
+}
+.center {
+    grid-area: m;
+    padding: 10px;
+}
+.right {
+    grid-area: r;
+}
+.bottom {
+    grid-area: f;
+}
+.logo {
+    width: 80%;
+}
+.card{
+    padding: 0.875rem 0.5rem;
+}
+.loginmain>div{
+    padding: 0.875rem 0.5rem;
+}
+.logintitle{
+    margin-bottom: 2rem;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.loginmain{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}

@@ -1,0 +1,72 @@
+.logo {
+    height: 100%;
+    margin-left: 1px;
+    margin-right: 1px;
+    /*width: 90px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nz-layout {
+    height: 100%;
+}
+
+nz-header {
+    padding: 0;
+    z-index: 1020;
+    /* relative　sider 会盖住 header 或者 另设zindex */
+    font-size: 1.25rem;
+    cursor: pointer;
+    width: 100%;
+    background: #fff !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    margin-bottom: 0.25rem;
+    /* 固定头部 */
+    border-bottom: 1px solid #e1e6ef;
+    padding: 0.5rem 0.5rem;
+}
+
+nz-header>div {
+    margin-right: 15px;
+}
+
+@media (max-width: 576px) {
+    .fidname {
+        display: none;
+    }
+    nz-divider{
+        display: none;
+    }
+}
+
+.fidname {
+    font-size: 1.75rem;
+}
+
+nz-sider {
+    background: #fff !important;
+    /*    padding: 0;
+    color: #fff;
+    background: #1890ff !important;
+    display: flex;
+    align-items: center;*/
+    /*position:absolute!important; */
+    /* relative　会盖住 header 或者 另设zindex */
+}
+
+nz-content {
+    height: 100%;
+}
+
+.main {
+    background: #fff !important;
+    margin-top: 64px;
+}
+
+.topmenu-spacer {
+    flex: 1 1 auto;
+}

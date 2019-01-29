@@ -1,0 +1,38 @@
+<div class='logindiv'>
+  <div class='top'></div>
+  <div class='left'>
+  </div>
+  <div class="center">
+    <div class="card">
+      <div class='logintitle'>
+        <img class="logo" src='./assets/img/logo.png'>
+        <div>请输入用户名和密码</div>
+      </div>
+      <div class="loginmain">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">工厂编码</span>
+          </div>
+          <input type="text" class="form-control" placeholder="工厂编码" [(ngModel)]="user.fid">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">用户名称</span>
+          </div>
+          <input type="text" class="form-control" placeholder="用户名称" [(ngModel)]="user.uname">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">用户密码</span>
+          </div>
+          <input type="password" class="form-control" placeholder="用户密码" [(ngModel)]="user.upass">
+        </div>
+        <div class="">
+          <button type="button" (click)='onclick()' class="btn btn-primary btn-block">登录</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='right'></div>
+  <div class='bottom'></div>
+</div>
