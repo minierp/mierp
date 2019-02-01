@@ -10,8 +10,10 @@ import { map } from 'rxjs/operators';
 })
 
 export class AppMenu {
-  FactName = '东莞市明志电脑服务有限公司';
-  Username = '管理员';
+  public FactName = '东莞市明志电脑服务有限公司';
+  public UserName = '管理员';
+  public DptName = '办公室';
+  public isCollapsed = false;
   menuleft:any=[];
 
   constructor(private data: DataService) {

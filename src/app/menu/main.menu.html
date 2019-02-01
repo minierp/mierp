@@ -1,50 +1,84 @@
-<div style=display:flex;flex-direction:column;height:100%;>
-    <div class="header">
-        <div class="mi_hd">
-            <a class="item" href="../supplier/index.php" target="_supply">厂商管理</a>
-            <span class="item  icon"><i nz-icon type="slack" theme="outline"></i></span>
-        </div>
-        <div class="mi_hd">
-            <span class="item" href="../supplier/index.php" target="_supply">客户管理</span>
-            <span class="item  icon"><i nz-icon type="slack" theme="outline"></i></span>
-        </div>
-        <div class="mi_hd">
-            <a class="item" href="../supplier/index.php" target="_supply">产品管理</a>
-            <span class="item  icon"><i nz-icon type="slack" theme="outline"></i></span>
-        </div>
-        <div class="mi_hd">
-            <a class="item" href="../supplier/index.php" target="_supply">仓库管理</a>
-            <span class="item  icon"><i nz-icon type="slack" theme="outline"></i></span>
+<div class="row mb-3">
+    <div class="col  mi_col">
+        <div class="card text-center bg-success main-d">
+            <div class="card-body mi_card-body">
+                <a class="main-a" href="../supplier/index.php" target="_supply"><i class="fa fa-users fa-3x main-i"></i></a>
+                <a class="main-a" href="../supplier/index.php" target="_supply">厂商<br class="d-block d-sm-none" />管理</a>
+            </div>
         </div>
     </div>
-    <div class='content'>
-        <a class="mi_cd" href="../jinghuo/index.php" target="_jinghuo">
-            <span class="item  icon"><i nz-icon type="slack" theme="outline"></i></span>
-            <span class="item" >采购收货</span>
-        </a>
-        <a class="mi_cd" href="../kuchen/index.php" target="_kuchen">
-            <span class="item  icon"><i nz-icon type="slack" theme="outline"></i></span>
-            <span class="item" >库存资料</span>
-        </a>
-        <a class="mi_cd" href="../songhuo/index.php" target="_songhuo">
-            <span class="item  icon"><i nz-icon type="slack" theme="outline"></i></span>
-            <span class="item" >销售开单</span>
-        </a>
+    <div class="col  mi_col">
+        <div class="card text-center bg-success main-d">
+            <div class="card-body mi_card-body">
+                <a class="main-a" href="../customer/index.php" target="_customer"><i class="fa fa-users fa-3x main-i"></i></a>
+                <a class="main-a" href="../customer/index.php" target="_customer">客户<br class="d-block d-sm-none" />管理</a>
+            </div>
+        </div>
     </div>
-
-    <div class='footer'>
-        <div class="item"><a href="../report/ordercg_rp022.php" target="ordercg_rp022">采购明细表</a></div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
-        <div class="item">footer</div>
+    <div class="col mi_col">
+        <div class="card text-center bg-success main-d">
+            <div class="card-body mi_card-body">
+                <i class="fa fa-rmb fa-3x main-i"></i>
+                <a class="main-a" href="../casebank/list.php" target="_casebank">現金<br class="d-block d-sm-none ">銀行</a>
+            </div>
+        </div>
     </div>
-
+    <div class="col mi_col">
+        <div class="card text-center bg-success main-d">
+            <div class="card-body mi_card-body">
+                <i class="fa fa-cubes fa-3x main-i"></i>
+                <a class="main-a" href="../products/index.php" target="_products">產品<br class="d-block d-sm-none">資料</a>
+            </div>
+        </div>
+    </div>
+    <div class="col mi_col">
+        <div class="card text-center bg-success main-d">
+            <div class="card-body mi_card-body">
+                <i class="fa fa-cc fa-3x main-i"></i>
+                <a class="main-a" href="../basicset/fupaysetlist.php" target="_paytype">付款<br class="d-block d-sm-none">方式</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-deck mb-3">
+    <div class="card text-center main-d">
+        <div class="card-body">
+            <a class="" href="../jinhuo/index.php" target="_jinghuo"><i class="fa fa-user fa-5x"></i></a>
+            <h1><a class="" href="../jinhuo/index.php" target="_jinghuo">采购收货</a></h1>
+        </div>
+    </div>
+    <div class="card text-center main-d">
+        <div class="card-body">
+            <a class="" href="../kuchen/index.php" target="_kuchen"><i class="fa fa-cubes fa-5x"></i></a>
+            <h1><a class="" href="../kuchen/index.php" target="_kuchen">库存资料</a></h1>
+        </div>
+    </div>
+    <div class="card text-center main-d">
+        <div class="card-body">
+            <a class="" href="../songhuo/index.php" target="_paytype"><i class="fa fa-newspaper-o fa-5x"></i></a>
+            <h1><a class="" href="../songhuo/index.php" target="_paytype">销售开单</a></h1>
+        </div>
+    </div>
+</div>
+<div class="card-group">
+    <div class="card">
+        <div class="card-header">
+            进货报表
+        </div>
+        <ul class="list-group list-group-flush">
+            <a class="list-group-item" href="../report/ordercg_rp022.php" target="ordercg_rp022">采购明细表</a>
+            <a class="list-group-item" href="../report/ordercg_rp026.php" target="ordercg_rp026">采购未交明细表</a>
+            <a class="list-group-item" href="../report/ordercg_rp024.php" target="ordercg_rp024">采购总表</a>
+        </ul>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            销售报表
+        </div>
+        <ul class="list-group list-group-flush">
+            <a class="list-group-item" href="../report/report014.php" target="report014">交期明细表</a>
+            <a class="list-group-item" href="../report/order_rp026.php" target="order_rp026">销售未交明细表</a>
+            <a class="list-group-item" href="../report/report011.php" target="report011">销售总表</a>
+        </ul>
+    </div>
 </div>

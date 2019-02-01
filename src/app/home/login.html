@@ -25,7 +25,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">用户密码</span>
           </div>
-          <input type="password" class="form-control" placeholder="用户密码" [(ngModel)]="user.upass">
+          <input type="password" class="form-control" placeholder="用户密码" [(ngModel)]="user.upass" (keypress)="($event.which === 13)?onclick():0">
         </div>
         <div class="">
           <button type="button" (click)='onclick()' class="btn btn-primary btn-block">登录</button>

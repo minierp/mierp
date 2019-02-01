@@ -1,106 +1,57 @@
-div {
-    /*border: 1px solid; */
-}
-
-.header {
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.content {
-    flex-grow: 3;
-    /* default 0 */
-}
-
-.footer {
-    flex-grow: 1;
-    /* default 0 */
-}
-
-.mi_hd {
-    border-radius: 0.25rem;
-    text-align: center;
-    padding: 1rem !important;
-    font-size: 1rem !important;
-    background-color: #28a745 !important;
-    position: relative;
-    overflow: hidden;
-    flex: 1 1 0;
-    min-width: 1rem;
-    max-width: 8rem;
-}
-
-.mi_hd .item {
-    color: rgb(255, 255, 255);
-    min-width: 2rem;
-    display: inline-block;
-}
-
-.mi_hd .icon {
+.main-i{
+    color: rgba(20, 20, 20, 0.15);
     position: absolute;
-    right: 0px;
-    bottom: 0px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.mi_hd .icon>i {
-    color: rgba(20, 20, 20, 0.15) !important;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
     display: block;
-    font-size: 3rem;
-    color: #08c;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
     transform: rotate(-44deg);
 }
-
-.content {
-    display: flex;
-    justify-content: space-around;
-    height: 400px;
-    align-items: center;
+.main-d{overflow: hidden;
 }
-
-.mi_cd {
-    display: flex;
-    border-radius: 0.25rem;
-    text-align: center;
-    padding: 2rem !important;
-    font-size: 1rem !important;
-    /*background-color: #28a745 !important; */
-    position: relative;
-    overflow: hidden;
-    justify-content: center;
-    flex-direction: column;
-    flex: 1 1 auto;
-    min-width: 4rem;
-    max-width: 10rem;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+.main-a{overflow: hidden;
+        color: #fff;
 }
-
-.mi_cd .item {
-    /*color: rgb(255, 255, 255); */
-    min-width: 2rem;
-    display: inline-block;
-    /* 确定 min-width　生效  */
+@media (min-width: 0px) {
+    .mi_col{
+        padding-right: 5px!important;
+        padding-left: 5px!important;
+    }
+    .main-a{font-size: 0.85rem!important
+    }
+    .fa-5x {
+        font-size: 2em;
+    }
+    h1, .h1 {
+    font-size: 1.5rem;
 }
-
-.mi_cd .icon>i {
-    color: rgba(20, 20, 20, 0.15) !important;
-    font-size: 4rem;
-    color: #08c;
+    .mi_card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 0.25rem!important;
+    }
 }
-
-.footer {
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-.footer .item {
-    display: inline-block;
-    /* 确定 min-width　生效  */
-    padding: 0.125rem !important;
-    text-align: center;
+@media (min-width: 576px) {
+    .mi_col{
+        padding-right: 15px!important;
+        padding-left: 15px!important;
+    }
+    .main-a{font-size: 1rem!important
+    }
+    .fa-5x {
+        font-size: 5em;
+    }
+    h1, .h1 {
+        font-size: 2.5rem;
+    }
+    .mi_card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1.25rem!important;
+    }
 }
