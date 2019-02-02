@@ -17,6 +17,14 @@ export const routes: Routes = [
     {path:"xs",component:JinghuoComponent},
     {path: '**',redirectTo: 'main', pathMatch: 'full'} //不存在的路由
   ]},
+  {path:"cg",component:JinghuoComponent,children:[
+    {path:"",redirectTo:"list",pathMatch:"full"},
+    {path:"list",component:JinghuoComponent},
+    {path:"edit",component:JinghuoComponent},
+    {path:"view",component:JinghuoComponent},
+    {path:"print",component:JinghuoComponent},
+    {path: '**',redirectTo: 'list', pathMatch: 'full'} //不存在的路由
+  ]},
   {path: 'login', component: AppLogin},
   {path: '**',redirectTo: 'menu', pathMatch: 'full'} //不存在的路由
   //{path: 'test', component: MynavComponent}

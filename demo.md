@@ -1,4 +1,5 @@
 // git checkout -b gh-pages  新建并切换
+// git branch -D gh-pages
 
 git checkout gh-pages  
 

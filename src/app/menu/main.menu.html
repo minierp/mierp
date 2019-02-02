@@ -1,5 +1,13 @@
 <div class="row mb-3">
-    <div class="col  mi_col">
+    <div class="col  mi_col" *ngFor="let delt of menutop;let index= index">
+        <div class="card text-center bg-success main-d">
+            <div class="card-body mi_card-body">
+                <a class="main-a" [routerLink]="delt.url" target="{{delt.target}}"><i class="fa {{delt.i}} fa-users fa-3x main-i"></i></a>
+                <a class="main-a" [routerLink]="delt.url" target="{{delt.target}}">{{delt.name}}</a>
+            </div>
+        </div>
+    </div>
+   <!-- <div class="col  mi_col">
         <div class="card text-center bg-success main-d">
             <div class="card-body mi_card-body">
                 <a class="main-a" href="../supplier/index.php" target="_supply"><i class="fa fa-users fa-3x main-i"></i></a>
@@ -38,7 +46,7 @@
                 <a class="main-a" href="../basicset/fupaysetlist.php" target="_paytype">付款<br class="d-block d-sm-none">方式</a>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <div class="card-deck mb-3">
     <div class="card text-center main-d">

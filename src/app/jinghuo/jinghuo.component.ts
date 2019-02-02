@@ -1,24 +1,24 @@
-import {Component, Pipe, PipeTransform} from '@angular/core';
+import { Component, Pipe, PipeTransform } from '@angular/core';
 //import {Http} from '@angular/http';
 //import {AuthGuardService} from '../core/auth-guard.service';
 import { DataService } from '../core/data.service';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './jinghuo.component.html',
-  styleUrls: ['./jinghuo.component.scss'],
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
 })
 
 export class JinghuoComponent {
   loaded: boolean = true;
-  opt: any = {CHK: 99, QIAN: 0, STA: 0};
+  opt: any = { CHK: 99, QIAN: 0, STA: 0 };
   model: any;
   delts: any;  //= [{'SHMID': '001'}, {'SHMID': '002'}];
   total_count: number = 0;
 
-  constructor(private data: DataService) { 
-  //  constructor() { 
-   this.LoadOrder(); 
+  constructor(private data: DataService) {
+    //  constructor() { 
+    this.LoadOrder();
   }
   setQIAN() {
     if (this.opt.QIAN === 0) {
@@ -37,13 +37,19 @@ export class JinghuoComponent {
     this.LoadOrder();
   }
   async LoadOrder() {
-    let data = await this.data.GetData('jinhuo/list',this.opt);
-    this.delts=data['items'];
+    let data = await this.data.GetData('jinhuo/list', this.opt);
+    this.delts = data['items'];
     let stat = data['stat'];
-     //console.log('LoadOrder');
+    //console.log('LoadOrder');
     this.loaded = false;
   }
   onChange(result: Date): void {
     console.log('onChange: ', result);
+  }
+  async DoDelt(mid:string) {
+    let data = await this.data.GetData('jinhuo/delt',{'mid':mid});
+    let stat = data['stat'];
+    //console.log('LoadOrder');
+    this.loaded = false;
   }
 }

@@ -1,15 +1,14 @@
 <nav class="navbar navbar-expand-md navbar-light sticky-top mi_header">
     <a class="navbar-brand logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-minia d-md-none">MiERP</span>
+        <span class="d-md-none">MiERP</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lga d-none d-md-block">MiniERP</span>
+        <span class="d-none d-md-block">MiniERP</span>
     </a>
-    <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-        aria-controls="navbarSupportedContent" *ngIf="isCollapsed">
+    <button type="button" class="btn btn-outline-primary d-md-none" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
             <li class="nav-item faname  b-l-1">
                 <h3>{{FactName}}</h3>
@@ -27,7 +26,7 @@
         <div class="col-12 col-sm-2 b-r-1 collapse navbar-collapse mi_sidebar text-center" [ngbCollapse]="isCollapsed">
             <div class="list-group text-center">
                 <a class='list-group-item' [routerLink]="['./main']">業務導航</a>
-                <a class='list-group-item' *ngFor="let delt of menuleft;let index= index" [routerLink]="delt.url"
+                <a class='list-group-item' *ngFor="let delt of menuleft;let index= index" [routerLink]="delt.url" [queryParams]="{id:delt.url}"
                     target="{{delt.target}}">{{delt.name}}</a>
                 <a class='list-group-item' href="#login">退出系统</a>
             </div>

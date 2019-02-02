@@ -1,7 +1,7 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { DataService } from '../core/data.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+//import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-menu',
@@ -14,15 +14,24 @@ export class AppMenu {
   public UserName = '管理员';
   public DptName = '办公室';
   public isCollapsed = false;
-  menuleft:any=[];
-
+  menuleft: any = [];
+  ngOnInit() {
+    fromEvent(window, 'resize').subscribe((event) => {
+      //console.log("innerWidth:" + window.innerWidth);
+      //console.log('innerHeight:' + window.innerHeight);
+      let wei=window.innerWidth;
+      if(wei<376){
+        this.isCollapsed=true;
+      }else{
+        this.isCollapsed=false;
+      }
+    });
+    this.LoadLeftMenu();//左侧菜单
+  }
   constructor(private data: DataService) {
-    this.LoadMenu();
-   }
-  async LoadMenu() {
-    let data = await this.data.GetData('menu/left',{});
-    this.menuleft=data['items'];
-    let stat = data['stat'];
-
+  }
+  async LoadLeftMenu() {
+    let data = await this.data.GetData('menu/left', {});
+    this.menuleft = data['items'];
   }
 }
