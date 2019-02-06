@@ -17,9 +17,9 @@ export class MainMenu {
   public menufoot = [];　//底部菜单
   public report = [];　//报表列表
   ngOnInit() {
-    //另一种方式参数订阅
-    this.routeInfo.queryParams.subscribe(params => {
-      let menuid = params['id'];
+    //另一种方式参数订阅  queryParams  　// 旧的参数
+    this.routeInfo.queryParamMap.subscribe(params => {
+      let menuid = params.get('id');
       if (typeof (menuid) != "undefined") {
         this.menuId = menuid;
       }else{

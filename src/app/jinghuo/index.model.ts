@@ -1,10 +1,13 @@
-import { NgModule}       from '@angular/core';
-import { CommonModule }   from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { ListComponent }           from './list.component';
-import { IndexRoutingModule }       from './index.routing';
+import { IndexRoot } from './index.root';
+import { ListComponent } from './list.component';
+import { EditComponent } from './edit.component';
+
+import { IndexRoutingModule } from './index.routing';
 
 @NgModule({
   imports: [
@@ -14,7 +17,7 @@ import { IndexRoutingModule }       from './index.routing';
     IndexRoutingModule
   ],
   declarations: [
-    ListComponent
+    IndexRoot, ListComponent, EditComponent
   ]
 })
-export class IndexModule {}
+export class IndexModule { }
