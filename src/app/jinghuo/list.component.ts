@@ -1,5 +1,4 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
-//import {Http} from '@angular/http';
 //import {AuthGuardService} from '../core/auth-guard.service';
 import { DataService } from '../core/data.service';
 
@@ -9,7 +8,7 @@ import { DataService } from '../core/data.service';
   styleUrls: ['./list.component.scss'],
 })
 
-export class JinghuoComponent {
+export class ListComponent {
   loaded: boolean = true;
   opt: any = { CHK: 99, QIAN: 0, STA: 0 };
   model: any;

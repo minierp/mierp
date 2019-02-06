@@ -3,7 +3,6 @@ import {ModuleWithProviders} from '@angular/core';
 
 import {AppLogin} from './home/login';
 import {AppMenu} from './menu/app.menu';
-import {JinghuoComponent} from './jinghuo/jinghuo.component';
 import {MainMenu} from './menu/main.menu';
 import {AuthGuardService} from './core/auth-guard.service';
 
@@ -13,16 +12,15 @@ export const routes: Routes = [
   {path: 'menu',canActivate: [AuthGuardService],component:AppMenu,children:[
     {path:"",redirectTo:"main",pathMatch:"full"},
     {path:"main",component:MainMenu},
-    {path:"cg",component:JinghuoComponent},
-    {path:"xs",component:JinghuoComponent},
     {path: '**',redirectTo: 'main', pathMatch: 'full'} //不存在的路由
   ]},
-  {path:"cg",component:JinghuoComponent,children:[
+  {path: 'jinghuo', loadChildren : "./jinghuo/index.model#IndexModule"},
+  {path:"cg",component:MainMenu,children:[
     {path:"",redirectTo:"list",pathMatch:"full"},
-    {path:"list",component:JinghuoComponent},
-    {path:"edit",component:JinghuoComponent},
-    {path:"view",component:JinghuoComponent},
-    {path:"print",component:JinghuoComponent},
+    {path:"list",component:MainMenu},
+    {path:"edit",component:MainMenu},
+    {path:"view",component:MainMenu},
+    {path:"print",component:MainMenu},
     {path: '**',redirectTo: 'list', pathMatch: 'full'} //不存在的路由
   ]},
   {path: 'login', component: AppLogin},

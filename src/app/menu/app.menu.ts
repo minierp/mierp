@@ -16,16 +16,23 @@ export class AppMenu {
   public isCollapsed = false;
   menuleft: any = [];
   ngOnInit() {
+    //console.log("innerWidth:" + window.innerWidth);
+    //console.log('innerHeight:' + window.innerHeight);
+    let wei = window.innerWidth;
+    if (wei < 376) {
+      this.isCollapsed = true;
+    } else {
+      this.isCollapsed = false;
+    }
     fromEvent(window, 'resize').subscribe((event) => {
-      //console.log("innerWidth:" + window.innerWidth);
-      //console.log('innerHeight:' + window.innerHeight);
-      let wei=window.innerWidth;
-      if(wei<376){
-        this.isCollapsed=true;
-      }else{
-        this.isCollapsed=false;
+      let wei = window.innerWidth;
+      if (wei < 376) {
+        this.isCollapsed = true;
+      } else {
+        this.isCollapsed = false;
       }
     });
+
     this.LoadLeftMenu();//左侧菜单
   }
   constructor(private data: DataService) {

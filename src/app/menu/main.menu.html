@@ -2,12 +2,12 @@
     <div class="col  mi_col" *ngFor="let delt of menutop;let index= index">
         <div class="card text-center bg-success main-d">
             <div class="card-body mi_card-body">
-                <a class="main-a" [routerLink]="delt.url" target="{{delt.target}}"><i class="fa {{delt.i}} fa-users fa-3x main-i"></i></a>
-                <a class="main-a" [routerLink]="delt.url" target="{{delt.target}}">{{delt.name}}</a>
+                <a class="main-a" [routerLink]="['/'+delt.url]" target="{{delt.target}}"><i class="fa {{delt.i}} fa-users fa-3x main-i"></i></a>
+                <a class="main-a" [routerLink]="['/'+delt.url]" target="{{delt.target}}">{{delt.name}}</a>
             </div>
         </div>
     </div>
-   <!-- <div class="col  mi_col">
+    <!-- <div class="col  mi_col">
         <div class="card text-center bg-success main-d">
             <div class="card-body mi_card-body">
                 <a class="main-a" href="../supplier/index.php" target="_supply"><i class="fa fa-users fa-3x main-i"></i></a>
@@ -49,12 +49,13 @@
     </div> -->
 </div>
 <div class="card-deck mb-3">
-    <div class="card text-center main-d">
+    <div class="card text-center main-d" *ngFor="let delt of menumain;let index= index">
         <div class="card-body">
             <a class="" href="../jinhuo/index.php" target="_jinghuo"><i class="fa fa-user fa-5x"></i></a>
-            <h1><a class="" href="../jinhuo/index.php" target="_jinghuo">采购收货</a></h1>
+            <h3><a class="" [routerLink]="['/'+delt.url]" target="{{delt.target}}">{{delt.name}}</a></h3>
         </div>
     </div>
+    <!--
     <div class="card text-center main-d">
         <div class="card-body">
             <a class="" href="../kuchen/index.php" target="_kuchen"><i class="fa fa-cubes fa-5x"></i></a>
@@ -67,12 +68,21 @@
             <h1><a class="" href="../songhuo/index.php" target="_paytype">销售开单</a></h1>
         </div>
     </div>
+    -->
+</div>
+<div class="row mb-3" *ngIf='menufoot'>
+    <div class="col  mi_col" *ngFor="let delt of menufoot;let index= index">
+        <div class="card text-center bg-success main-d">
+            <div class="card-body mi_card-body">
+                <a class="main-a" [routerLink]="['/'+delt.url]" target="{{delt.target}}"><i class="fa {{delt.i}} fa-users fa-3x main-i"></i></a>
+                <a class="main-a" [routerLink]="['/'+delt.url]" target="{{delt.target}}">{{delt.name}}</a>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="card-group">
     <div class="card">
-        <div class="card-header">
-            进货报表
-        </div>
+        <div class="card-header">进货报表</div>
         <ul class="list-group list-group-flush">
             <a class="list-group-item" href="../report/ordercg_rp022.php" target="ordercg_rp022">采购明细表</a>
             <a class="list-group-item" href="../report/ordercg_rp026.php" target="ordercg_rp026">采购未交明细表</a>
@@ -80,9 +90,7 @@
         </ul>
     </div>
     <div class="card">
-        <div class="card-header">
-            销售报表
-        </div>
+        <div class="card-header">销售报表</div>
         <ul class="list-group list-group-flush">
             <a class="list-group-item" href="../report/report014.php" target="report014">交期明细表</a>
             <a class="list-group-item" href="../report/order_rp026.php" target="order_rp026">销售未交明细表</a>
