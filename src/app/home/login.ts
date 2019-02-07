@@ -17,7 +17,7 @@ export class AppLogin {
   private auth: Auth;
   validateForm:FormGroup;
   constructor(@Inject('auth') private service,private router: Router,private fb: FormBuilder) {
-    this.service.ClearToken();
+    //this.service.ClearToken();
   }
   async onclick() {
     let logyn = await this.service.Login(this.user.uname, this.user.upass, this.user.fid);

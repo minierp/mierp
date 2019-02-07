@@ -14,10 +14,10 @@ import { AppMenu } from './menu/app.menu';
 import { AppRoot } from './app.root';
 import { AppLogin } from './home/login';
 import { routing } from './app.routes';
-//import {ListComponent} from './jinghuo/list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+
 
 @NgModule({
   declarations:

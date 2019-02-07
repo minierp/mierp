@@ -14,7 +14,7 @@ export const routes: Routes = [
     {path:"main",component:MainMenu},
     {path: '**',redirectTo: 'main', pathMatch: 'full'} //不存在的路由
   ]},
-  {path: 'jinghuo', loadChildren : "./jinghuo/index.model#IndexModule"},
+  {path: 'jinhuo', loadChildren : "./jinhuo/index.model#IndexModule"},
   {path:"cg",component:MainMenu,children:[
     {path:"",redirectTo:"list",pathMatch:"full"},
     {path:"list",component:MainMenu},

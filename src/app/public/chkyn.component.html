@@ -1,0 +1,8 @@
+<span [ngClass]="{'text-danger':!shqi}">
+    <a class="btn-link btn-sm" *ngIf='shqi' (click)=DoQiyn()>己结</a>
+    <a class="btn-link btn-sm" *ngIf='!shqi' (click)=DoQiyn()>未结</a>
+</span>
+<span [ngClass]="{'text-danger':!shck}">
+    <a class="btn-link btn-sm" *ngIf='shck' (click)=DoCkyn()>己审</a>
+    <a class="btn-link btn-sm" *ngIf='!shck' (click)=DoCkyn()>未审</a>
+</span>

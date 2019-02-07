@@ -3,6 +3,7 @@ import { Component, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../core/data.service';
+import { PathService } from './path.service';
 
 @Component({
   selector: 'app-edit',
@@ -14,13 +15,15 @@ export class EditComponent {
   loaded: boolean = true;
   opt: any = { CHK: 99, QIAN: 0, STA: 0 };
   par: any;// { clactp: D03 };
-  orders: any={}; // {'mast':{'SHMID':'001'},delts:[{'SHDID':'001'}]};
+  orders: any = {}; // {'mast':{'SHMID':'001'},delts:[{'SHDID':'001'}]};
   mast: any = {}; // {'mast':{'SHMID':'001'};
   delts: any = []; // delts:[{'SHDID':'001'}];
-  edited:boolean=true;
+  edited: boolean = true;
   id: string = '';  //SHMID
+  private path: string = '';
 
-  constructor(private data: DataService, private routeInfo: ActivatedRoute) {
+  constructor(private data: DataService, private routeInfo: ActivatedRoute, private pathService: PathService) {
+    this.path = pathService.path;
   }
   ngOnInit() {
     /* this.routeInfo.url.subscribe(params => { //如采用子路由   path: ':id'  path 取不到
@@ -42,7 +45,7 @@ export class EditComponent {
     } else {
       this.opt.QIAN = 0;
     }
-    this.LoadData(this.id); this.LoadData(this.id);
+    this.LoadData(this.id);
   }
   setCHKYN() {
     if (this.opt.CHK === 0) {
@@ -59,7 +62,7 @@ export class EditComponent {
     this.delts = orders['delt'];
   }
   async LoadData(id: string) {
-    let data = await this.data.GetData('jinhuo/data/' + id, {});
+    let data = await this.data.GetData(this.path + '/data/' + id, {});
     this.orders = data['data'];
     this.loadmast(this.orders);
     this.loaddelts(this.orders);

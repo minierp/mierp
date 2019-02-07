@@ -28,7 +28,7 @@
                 <button class="btn btn-outline-info" ng-class="{'btn-outline-danger':saved,'btn-outline-success':!saved}"
                     type="button" ng-disabled='edited' ng-click="saveOrder()">保存</button>
                 <a class="btn btn-outline-info" href="./print.php?MID={{mast.SHMID}}" target="print">列印</a>
-                <a class="btn btn-outline-info" href="#/list">返回</a>
+                <a class="btn btn-outline-info" [routerLink]="['../../']">返回</a>
             </div>
         </div>
     </div>

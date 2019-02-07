@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexRoot } from './index.root';
 import { ListComponent } from './list.component';
 import { EditComponent } from './edit.component';
+import { PrintComponent } from './print.component';
 
 import { AuthGuardService } from '../core/auth-guard.service';
 
@@ -16,44 +17,20 @@ const IndexRoutes: Routes = [
       { path: 'list', component: ListComponent },
       {
         path: 'edit/:id', component: EditComponent
-      /*  children: [
-          {
-            path: ':id',
-            component: EditComponent
-          }
-          /*,
-          {
-            path: '',
-            component: EditComponent
-          }
-        ] */
+        /*  children: [
+            {
+              path: ':id',
+              component: EditComponent
+            }
+            /*,
+            {
+              path: '',
+              component: EditComponent
+            }
+          ] */
       },
-      {
-        path: 'view', component: EditComponent,
-        children: [
-          {
-            path: ':id',
-            component: EditComponent
-          },
-          {
-            path: '',
-            component: EditComponent
-          }
-        ]
-      },
-      {
-        path: 'print', component: EditComponent,
-        children: [
-          {
-            path: ':id',
-            component: EditComponent
-          },
-          {
-            path: '',
-            component: EditComponent
-          }
-        ]
-      },
+      { path: 'view/:id', component: EditComponent },
+      { path: 'print/:id', component: PrintComponent },
       { path: '', redirectTo: 'list', pathMatch: 'full' },
       { path: '**', redirectTo: 'list', pathMatch: 'full' } //不存在的路由
     ]

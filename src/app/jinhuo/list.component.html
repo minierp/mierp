@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="col-12 col-sm-8 col-md-4">
-            <a type="button" class="btn btn-outline-info" [routerLink]="['../edit']" >新增</a>
+            <a type="button" class="btn btn-outline-info" [routerLink]="['../edit',0]">新增</a>
             <button type="button" class="btn btn-outline-info" (click)="opt.DTP = 'JHD';
                                 opt.STA = opt.STA + 1;
                                 (opt.STA > 2) ? opt.STA = 0 : 1;
@@ -91,13 +91,12 @@
                     <td>{{delt.USERNAME}}</td>
                     <td>{{delt.SHM13NA}}</td>
                     <td nowrap>
-                        <a wnwg-controller='showQianModel' (click)="qian($index)">{{delt.QIANT}}</a>
-                        <a wnwg-controller='showPYNModel' wnwg-class="{'text-dawnwger':delt.CHKPASS == 1}" (click)="cyn($index, delt.CHKPASS)">{{delt.CHKNA}}</a>
+                        <mi-chkyn [mid]="delt.SHMID" [path]='path' [ckyn]='delt.CHKYN' [qiyn]='delt.QIAN' >{{delt.CHKNA}}{{delt.QIANT}} </mi-chkyn>
                     </td>
                     <td nowrap class="text-center">
                         <a class="btn-link btn-sm" [routerLink]="['../edit',delt.SHMID]">修改</a>
                         <a class="btn-link btn-sm" [routerLink]="['../print',delt.SHMID]" target="print">列印</a>
-                        <a class="btn-link btn-sm" (click)="DoDelt(delt.SHMID)" >删除</a>
+                        <a class="btn-link btn-sm" (click)="DoDelt(delt.SHMID)">删除</a>
                     </td>
                 </tr>
             </tbody>

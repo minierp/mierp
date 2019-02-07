@@ -38,7 +38,7 @@ export class DataService {
     for (var key in opt) {
       par += '&' + key + '=' + opt[key];
     }
-    let loadurl = this.auth_url + dtp;
+    let loadurl = this.auth_url + dtp;  //auth_url
     if (par != '') {
       loadurl = loadurl + '/?' + par;//+ '&TOKEN=' + token;;
     }
@@ -64,7 +64,7 @@ export class DataService {
 
     let data = await this.http.get(loadurl).toPromise();
     let stat = data['stat'];
-    if (stat == 'OK') { //正确登录
+    if (stat == 'OK') { 
       return data;
     }
     return data;
