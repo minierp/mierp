@@ -1,7 +1,7 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
+import { Component, Pipe, PipeTransform ,Inject} from '@angular/core';
 //import {AuthGuardService} from '../core/auth-guard.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { Buffer } from 'buffer';
 import { DataService } from '../core/data.service';
 import { PathService } from './path.service';
 
@@ -12,12 +12,13 @@ import { PathService } from './path.service';
 })
 
 export class PrintComponent {
-  public printstr: string = 'printtest';
+  public printstr: string = 'jinhuo.printstr';
+  public printurl: string = 'jinhuo.printurl';
   private opt: any = { CHK: 99, QIAN: 0, STA: 0 };
   private id: string = '';  //SHMID
   private path: string = '';
 
-  constructor(private data: DataService, private routeInfo: ActivatedRoute, private pathService: PathService) {
+  constructor(@Inject('auth') private service,private data: DataService, private routeInfo: ActivatedRoute, private pathService: PathService) {
     this.path = pathService.path;
   }
   ngOnInit() {
@@ -26,12 +27,9 @@ export class PrintComponent {
       if (typeof (id) != "undefined") {
         this.id = id;
       }
-      this.LoadData(this.id);
+      let token=this.service.GetToken();
+      this.printurl = this.data.data_url + this.path + '/print/' + id+'?TOKEN='+token;
+      //console.log(this.printurl);
     })
-  }
-  async LoadData(id: string) {
-    let data = await this.data.GetData(this.path + '/doprint/' + id, {});
-    this.printstr = data['data'];
-
   }
 }

@@ -1,6 +1,7 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { DataService } from '../core/data.service';
 import { fromEvent } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 //import { map } from 'rxjs/operators';
 
 @Component({
@@ -15,6 +16,11 @@ export class AppMenu {
   public DptName = '办公室';
   public isCollapsed = false;
   menuleft: any = [];
+  constructor(private titleService: Title, private data: DataService) {
+    //this.service.ClearToken();
+    this.titleService.setTitle('ＭiniERP ' + this.FactName);
+  }
+
   ngOnInit() {
     //console.log("innerWidth:" + window.innerWidth);
     //console.log('innerHeight:' + window.innerHeight);
@@ -34,8 +40,6 @@ export class AppMenu {
     });
 
     this.LoadLeftMenu();//左侧菜单
-  }
-  constructor(private data: DataService) {
   }
   async LoadLeftMenu() {
     let data = await this.data.GetData('menu/left', {});
