@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class DataService {
@@ -35,7 +34,7 @@ export class DataService {
   }
   async GetAuthData(dtp: string, opt: any) {     //let token =this.service.GetToken();
     let par: string = '';
-    for (var key in opt) {
+    for (let key in opt) {
       par += '&' + key + '=' + opt[key];
     }
     let loadurl = this.auth_url + dtp;  //auth_url
@@ -43,30 +42,21 @@ export class DataService {
       loadurl = loadurl + '/?' + par;//+ '&TOKEN=' + token;;
     }
 
-
     let data = await this.http.get(loadurl).toPromise();
     let stat = data['stat'];
-    if (stat == 'OK') { //正确登录
-      return data;
-    }
     return data;
   }
 
   async GetUrl(dtp: string, opt: any) {
     let par: string = '';
-    for (var key in opt) {
+    for (let key in opt) {
       par += '&' + key + '=' + opt[key];
     }
     let loadurl = this.data_url + dtp;
     if (par != '') {
       loadurl = loadurl + '/?' + par;//+ '&TOKEN=' + token;;
     }
-
     let data = await this.http.get(loadurl).toPromise();
-    let stat = data['stat'];
-    if (stat == 'OK') { 
-      return data;
-    }
     return data;
   }
 }

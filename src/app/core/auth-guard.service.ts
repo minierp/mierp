@@ -5,7 +5,6 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { strict } from 'assert';
 
 @Injectable()
 export class AuthGuardService {

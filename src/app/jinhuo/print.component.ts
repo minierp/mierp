@@ -1,7 +1,6 @@
 import { Component, Pipe, PipeTransform ,Inject} from '@angular/core';
 //import {AuthGuardService} from '../core/auth-guard.service';
 import { ActivatedRoute } from '@angular/router';
-import { Buffer } from 'buffer';
 import { DataService } from '../core/data.service';
 import { PathService } from './path.service';
 

@@ -11,6 +11,8 @@ import { PrintComponent } from './print.component'
 import { ChkynComponent } from '../public/chkyn.component'
 import { PrintPubComponent } from '../public/print.pub.component'
 import { HtmlPipe } from '../public/htmlpipe.pipe'
+import { TablekeyDirective } from '../public/directive/tablekey.directive';
+import { DoCalcDirective } from '../public/directive/doCalc.directive';
 
 import { IndexRoutingModule } from './index.routing';
 
@@ -19,11 +21,12 @@ import { IndexRoutingModule } from './index.routing';
     NgbModule,
     CommonModule,
     FormsModule,
-    IndexRoutingModule,
+    IndexRoutingModule
   ],
   providers: [PathService],//注册服务
   declarations: [
-    IndexRoot, ListComponent, EditComponent, ChkynComponent, PrintComponent, HtmlPipe,PrintPubComponent
+    IndexRoot, ListComponent, EditComponent, ChkynComponent, PrintComponent, HtmlPipe,PrintPubComponent,
+    TablekeyDirective,DoCalcDirective
   ]
 })
 export class IndexModule {
