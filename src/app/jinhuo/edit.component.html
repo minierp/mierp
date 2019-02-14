@@ -3,8 +3,13 @@
 -->
 <div class="container-fluid">
     <div class="row navbar">
-        <div class="col-4 col-sm-6 col-md-2">进货单</div>
-        <div class="col-sm-2 col-md-2">{{mast.QISTR}}<span ng-show="mast.CHKYN == '1'">己审核</span></div>
+        <div class="row col-4 col-sm-6 col-md-3">
+            <span class="col">进货单 {{mast.QISTR}}</span>
+            <span class="col" *ngIf="mast.CHKYN == '1'"><img style="height:38px" src="../../assets/images/chky.png"
+                    title="己审核" alt="己审核" /></span>
+            <span class="col" *ngIf="mast.QIAN == '1'"><img style="height:38px" src="../../assets/images/chky.png"
+                    title="己结案" alt="己结案" /></span>
+        </div>
         <div class="col-sm-3 col-md-3">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -23,7 +28,7 @@
                 <input class="form-control" type="text" [readonly]='!CanEdit' [(ngModel)]='mast.SHM01' date-picker />
             </div>
         </div>
-        <div class="col-sm-2 col-md-3">
+        <div class="col-sm-2 col-md-2">
             <div class="btn-group ">
                 <button class="btn btn-outline-info"
                     [ngClass]="{'btn-outline-danger':!Saved,'btn-outline-success':Saved}" type="button"
@@ -33,9 +38,8 @@
             </div>
         </div>
     </div>
-    <div class="row navbar ">
+    <div class="row navbar">
         <div class="col-sm-3">
-
             <div class="input-group">
                 <div class="input-group-prepend">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon1">厂商</button>
@@ -91,6 +95,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row navbar">
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -154,6 +160,10 @@
             </div>
         </div>
     </div>
+    <p *ngFor="let alert of alerts">
+        <ngb-alert  [type]="alert.type" (close)="close(alert)" >{{ alert.message }}</ngb-alert>
+    </p>
+    <!--<p-messages [(value)]="alerts"></p-messages> -->
     <div class="table-responsive">
         <table miTablekey class="table table-bordered table-sm edittable">
             <thead>
@@ -206,7 +216,7 @@
                             (changeTotal)="DoCalcTotal($event)" /></td>
                     <td nowrap>
                         <button type="button" class="btn btn-default btn-sm" [disabled]="!CanEdit"
-                            (click)="DelDelt($index)">删除</button>
+                            (click)="DelDelt(delt)">删除</button>
                     </td>
                 </tr>
             </tbody>
@@ -264,5 +274,7 @@
             </div>
         </div>
     </div>
+
 </div>
+
 <!-- <tm-pagination conf="paginationConf"></tm-pagination> -->

@@ -2,7 +2,8 @@ import { Component, Pipe, PipeTransform } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
-  templateUrl: './index.root.html'
+  templateUrl: './index.root.html',
+  styleUrls: ['./index.root.scss']
   //styleUrls: []
 })
 

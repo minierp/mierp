@@ -1,11 +1,13 @@
 import { Injectable, Inject } from "@angular/core";
-import { HttpEvent, HttpHandler, HttpInterceptor } from "@angular/common/http";
+import { HttpEvent, HttpHandler, HttpResponse, HttpInterceptor, HttpErrorResponse } from "@angular/common/http";
 import { HttpRequest } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable,of } from "rxjs";
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor() { }
+    constructor(@Inject('auth') private service, private router: Router) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let userstr = localStorage.getItem('user');
         let token = '';
@@ -20,11 +22,27 @@ export class AuthInterceptor implements HttpInterceptor {
         //if (token) {
         //    url = req.url + '&TOKEN=' + token;
         //}
-        const newReq = req.clone({
+        const authReq = req.clone({
             headers: req.headers.set('HTTP_MITOKEN', token)   //跨域访问-预请求及跨域问题 XHR OPTIONS
-          });
+        });
         //const newReq = req.clone({ url });  //目前加在最后做参数   跨域访问-预请求及跨域问题 XHR OPTIONS
         //console.log("new headers", newReq.headers.keys());
-        return next.handle(newReq);
+        //return next.handle(authReq);
+        return next.handle(authReq)
+            .pipe(
+                catchError((err) => this.handleError(err))
+            ) as any;
+    }
+    private handleError(err: HttpErrorResponse): Observable<any> {
+        //console.log(err);
+        if (err.status === 401 || err.status === 403) {
+            this.service.ClearToken();
+            this.router.navigateByUrl(`/login`);
+            //return Observable.of(err.message);
+            of(err.message);
+        }
+        // handle your auth error or rethrow
+        //return Observable.throw(err);
+        return of(err);
     }
 }

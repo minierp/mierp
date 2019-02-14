@@ -32,6 +32,15 @@ export class DataService {
     //console.log(userdata);
     return userdata;
   }
+  async PostData(path: string, par: any) {
+    let userdata = await this.PostUrl(path, par);
+    let stat = userdata['stat'];
+    if (stat == 'ERROR') {
+      //this.service.DoProcessErr(userdata);
+    }
+    //console.log(userdata);
+    return userdata;
+  }
   async GetAuthData(dtp: string, opt: any) {     //let token =this.service.GetToken();
     let par: string = '';
     for (let key in opt) {
@@ -48,6 +57,23 @@ export class DataService {
   }
 
   async GetUrl(dtp: string, opt: any) {
+    let par: string = '';
+    for (let key in opt) {
+      par += '&' + key + '=' + opt[key];
+    }
+    let loadurl = this.data_url + dtp;
+    if (par != '') {
+      loadurl = loadurl + '/?' + par;//+ '&TOKEN=' + token;;
+    }
+    let data = await this.http.get(loadurl).toPromise();
+    return data;
+  }
+  async PostUrl(dtp: string, par: any) {
+    let loadurl = this.data_url + dtp;
+    let data = await this.http.post(loadurl,par).toPromise();
+    return data;
+  }
+  async PutUrl(dtp: string, opt: any) {
     let par: string = '';
     for (let key in opt) {
       par += '&' + key + '=' + opt[key];

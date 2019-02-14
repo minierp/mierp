@@ -13,6 +13,7 @@ import { PrintPubComponent } from '../public/print.pub.component'
 import { HtmlPipe } from '../public/htmlpipe.pipe'
 import { TablekeyDirective } from '../public/directive/tablekey.directive';
 import { DoCalcDirective } from '../public/directive/doCalc.directive';
+//import { MessagesModule } from '../public/lib/messages';
 
 import { IndexRoutingModule } from './index.routing';
 
@@ -22,6 +23,7 @@ import { IndexRoutingModule } from './index.routing';
     CommonModule,
     FormsModule,
     IndexRoutingModule
+    //,MessagesModule
   ],
   providers: [PathService],//注册服务
   declarations: [

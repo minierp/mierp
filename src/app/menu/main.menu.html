@@ -51,7 +51,7 @@
 <div class="card-deck mb-3">
     <div class="card text-center main-d" *ngFor="let delt of menumain;let index= index">
         <div class="card-body">
-            <a class="" href="../jinhuo/index.php" target="_jinghuo"><i class="fa fa-user fa-5x"></i></a>
+            <a class="" [routerLink]="['/'+delt.url]" target="{{delt.target}}"><i class="fa fa-user fa-5x"></i></a>
             <h3><a class="" [routerLink]="['/'+delt.url]" target="{{delt.target}}">{{delt.name}}</a></h3>
         </div>
     </div>

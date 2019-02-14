@@ -5,6 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../core/data.service';
 import { PathService } from './path.service';
 
+interface Alert {
+  type: string;
+  message: string;
+  closetime: number; //自动关闭时间, 0不自动关闭
+}
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -26,6 +31,7 @@ export class EditComponent {
   Loaded: boolean = true; //true 己加载完成　 false 加载中
   id: string = '';  //SHMID
   private path: string = '';
+  alerts: any = [];
 
   constructor(private data: DataService, private routeInfo: ActivatedRoute, private pathService: PathService) {
     this.path = pathService.path;
@@ -43,6 +49,20 @@ export class EditComponent {
       }
       this.LoadData(this.id);
     })
+  }
+  show(alert: Alert) {
+    this.alerts.push(alert);
+    let time = alert.closetime;
+    if (time > 0) {
+      setTimeout(() => this.close(alert), time);
+    }
+  }
+  clear() {
+    this.alerts = [];
+  }
+  close(alert: Alert) {
+    //console.log('Close:');console.log(alert);
+    this.alerts.splice(this.alerts.indexOf(alert), 1);
   }
   setQIAN() {
     if (this.opt.QIAN === 0) {
@@ -63,23 +83,47 @@ export class EditComponent {
   loadmast(orders: any) {
     this.mast = orders['mast'];
     //console.log(this.mast.QIAN,this.mast.CHKYN);
-    this.CanEdit=(this.mast.CHKYN==0 && this.mast.QIAN==0);
+    this.CanEdit = (this.mast.CHKYN == 0 && this.mast.QIAN == 0);
   }
   loaddelts(orders: any) {
     this.delts = orders['delt'];
+    let ltot = this.delts.length
+    for (let i = 5; i >= ltot; i--) {
+      this.delts.push({});
+    }
+  }
+  DelDelt(delt) {
+    //console.log('Close:');console.log(alert);
+    this.delts.splice(this.delts.indexOf(delt), 1);
+    let ltot = this.delts.length
+    for (let i = 5; i >= ltot; i--) {
+      this.delts.push({});
+    }
+    this.Saved=false;
   }
   async LoadData(id: string) {
+    let loadstr = { type: 'info', message: '正在加载....', closetime: 0 }
+    this.show(loadstr);
+    this.Loaded = false;
     let data = await this.data.GetData(this.path + '/data/' + id, {});
     this.orders = data['data'];
     this.loadmast(this.orders);
     this.loaddelts(this.orders);
     this.Loaded = true;
+    this.close(loadstr);
   }
-  doSaveOrder(){
-    this.Saved=true;
+  async  doSaveOrder() {
+    let data = { mast: this.mast, 'delt': this.delts, 'par': this.par };
+    let rs = await this.data.PostData(this.path + '/data/', data);
+    console.log(rs);
+    let rsdata = rs['data'];
+    this.id = rs['mid'];
+    this.LoadData(this.id);
+
+    this.Saved = true;
   }
   DoCalcTotal(val: string) {
-    this.Saved=false;//需要保存
+    this.Saved = false;//需要保存
     //console.log(val);
     //计算总计
     //console.log('doCalcTotal');
